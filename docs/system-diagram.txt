@@ -1,0 +1,42 @@
+High-Level System Diagram
+=========================
+
+                 simulated state changes
+                         |
+                         v
+        +-----------------------------------+
+        | Simulated Device Layer            |
+        | - 3 rooms                         |
+        | - fans and lights                 |
+        | - status, watts, timestamps       |
+        +-----------------+-----------------+
+                          |
+                          | in-memory source of truth
+                          v
+        +-----------------------------------+
+        | FastAPI Backend                   |
+        | - /api/devices                    |
+        | - /api/summary                    |
+        | - /api/rooms/{room}               |
+        | - /api/alerts                     |
+        | - /api/devices/{id}/toggle        |
+        +-----------+-----------------------+
+                    |
+          +---------+----------+
+          |                    |
+          v                    v
++-------------------+   +---------------------------+
+| Web Dashboard     |   | Discord Bot               |
+| - live status     |   | - !status                 |
+| - power meter     |   | - !room <name>            |
+| - alerts          |   | - !usage                  |
+| - demo toggles    |   | - proactive alerts        |
++-------------------+   +-------------+-------------+
+                                      |
+                                      | fallback chat only
+                                      v
+                         +---------------------------+
+                         | Groq API                  |
+                         | conversational responses  |
+                         +---------------------------+
+

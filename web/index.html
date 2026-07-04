@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>disbot Office Monitor</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>disbot Office Monitor</h1>
+        <p id="updatedAt">Waiting for device data</p>
+      </div>
+      <div class="meter" aria-live="polite">
+        <span>Total Power</span>
+        <strong id="totalPower">0 W</strong>
+        <small id="dailyUsage">0 kWh/day</small>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="office-layout" aria-label="Office layout" id="officeLayout"></section>
+
+      <section class="status-grid" aria-label="Device status" id="statusGrid"></section>
+
+      <aside class="alerts" aria-label="Active alerts">
+        <h2>Active Alerts</h2>
+        <div id="alertsList" class="alerts-list"></div>
+      </aside>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
+
